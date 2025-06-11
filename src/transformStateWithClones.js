@@ -7,7 +7,7 @@
  * @return {Object[]}
  */
 function transformStateWithClones(state, actions) {
-  const stateCopy = { ...state };
+  let stateCopy = { ...state };
   const stateHistorie = [];
 
   for (const action of actions) {
@@ -24,11 +24,7 @@ function transformStateWithClones(state, actions) {
         break;
 
       case 'clear':
-        for (const key of Object.keys(stateCopy)) {
-          if (stateCopy[key]) {
-            delete stateCopy[key];
-          }
-        }
+        stateCopy = {};
 
         break;
     }
